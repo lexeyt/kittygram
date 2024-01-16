@@ -2,7 +2,7 @@ version: '3'
 
 volumes:
   pg_data:
-  static:
+  static_volume:
   media:
 
 services:
@@ -15,18 +15,18 @@ services:
     image: lexeyt/kittygram_backend
     env_file: .env
     volumes:
-      - static:/backend_static
+      - static_volume:/backend_static
       - media:/media
   frontend:
     env_file: .env
     image: lexeyt/kittygram_frontend
-    command: cp -r /app/build/. /static/
+    command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static:/static
+      - static_volume:/frontend_static
   gateway:
     image: lexeyt/kittygram_gateway
     env_file: .env
     ports:
       - 9000:80
     volumes:
-      - static:/static
+      - static_volume:/staticfiles/
