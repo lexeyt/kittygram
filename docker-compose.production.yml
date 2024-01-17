@@ -1,16 +1,17 @@
 version: '3'
 
 volumes:
-  pgs:
+  pg:
   static:
   media:
 
 services:
+
   db:
     image: postgres:13
     env_file: .env
     volumes:
-      - pgs:/var/lib/postgresql/data
+      - pg:/var/lib/postgresql/data
       
   backend:
     image: lexeyt/kittygram_backend
