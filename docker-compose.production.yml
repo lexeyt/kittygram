@@ -12,21 +12,23 @@ services:
     env_file: .env
     volumes:
       - pg:/var/lib/postgresql/data
-      
+
   backend:
     image: lexeyt/kittygram_backend
     env_file: .env
     volumes:
       - static:/backend_static
       - media:/app/media
-      
+    depends_on:
+      - db
+
   frontend:
     env_file: .env
     image: lexeyt/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
-      
+
   gateway:
     image: lexeyt/kittygram_gateway
     env_file: .env
@@ -35,3 +37,6 @@ services:
     volumes:
       - static:/static/
       - media:/media/
+    depends_on:
+      - backend
+      - frontend
