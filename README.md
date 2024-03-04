@@ -2,7 +2,7 @@
 
 ![example workflow](https://github.com/lexeyt/kittygram_final/actions/workflows/main.yml/badge.svg)
 
-Учебный проект для ведения базы котов, котиков и кошек:
+Сервис для ведения базы котов, котиков и кошек:
 
 ## Возможности
 - Регистрация на сайте
